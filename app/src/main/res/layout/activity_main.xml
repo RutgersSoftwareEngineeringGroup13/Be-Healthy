@@ -8,75 +8,79 @@
     android:fitsSystemWindows="true"
     tools:context="com.group13.behealthy.MainActivity">
 
-    <LinearLayout
-        android:orientation="vertical"
+    <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="@drawable/blue">
 
-        <android.support.design.widget.AppBarLayout
-            android:layout_height="wrap_content"
+        <android.support.v7.widget.Toolbar
+            android:id="@+id/toolbar"
             android:layout_width="match_parent"
-            android:theme="@style/AppTheme.AppBarOverlay">
-
-            <android.support.v7.widget.Toolbar
-                android:id="@+id/toolbar"
-                android:layout_width="match_parent"
-                android:layout_height="?attr/actionBarSize"
-                android:background="?attr/colorPrimary"
-                app:popupTheme="@style/AppTheme.PopupOverlay"
-                android:layout_weight="1" />
-
-        </android.support.design.widget.AppBarLayout>
+            android:layout_height="wrap_content"
+            android:background="?attr/colorPrimary"
+            app:popupTheme="@style/AppTheme.PopupOverlay"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true" />
 
         <TextView
-            android:text="Welcome to Be Healthy!"
-            android:layout_width="match_parent"
+            android:text="@string/welcome"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:id="@+id/textView"
-            android:textSize="30sp"
-            android:textAlignment="center"
-            android:layout_marginTop="?attr/dialogPreferredPadding" />
+            android:textSize="36sp"
+            android:layout_marginTop="39dp"
+            android:layout_below="@+id/toolbar"
+            android:layout_centerHorizontal="true" />
 
         <EditText
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:inputType="textPersonName"
             android:ems="10"
             android:id="@+id/userName"
-            tools:layout_marginTop="?attr/dialogPreferredPadding"
-            android:layout_marginLeft="@dimen/activity_horizontal_margin"
-            android:layout_marginRight="@dimen/activity_horizontal_margin"
-            android:hint="username" />
+            android:hint="username"
+            tools:layout_editor_absoluteY="0dp"
+            tools:layout_editor_absoluteX="0dp"
+            android:singleLine="false"
+            android:textSize="18sp"
+            android:layout_below="@+id/textView"
+            android:layout_alignLeft="@+id/textView"
+            android:layout_alignStart="@+id/textView"
+            android:layout_marginTop="53dp"
+            android:layout_alignRight="@+id/textView"
+            android:layout_alignEnd="@+id/textView" />
+
+        <Button
+            android:text="Log In"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/button"
+            android:textAlignment="center"
+            android:elevation="0dp"
+            android:onClick="login"
+            tools:layout_editor_absoluteY="321dp"
+            tools:layout_editor_absoluteX="148dp"
+            android:layout_marginTop="57dp"
+            android:layout_below="@+id/password"
+            android:layout_centerHorizontal="true" />
 
         <EditText
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:inputType="textPassword"
             android:ems="10"
             android:id="@+id/password"
             android:hint="Password"
-            tools:layout_marginTop="?attr/dialogPreferredPadding"
-            tools:layout_marginLeft="@dimen/activity_horizontal_margin"
-            android:layout_marginRight="@dimen/activity_horizontal_margin"
-            android:layout_marginLeft="@dimen/activity_horizontal_margin" />
+            tools:layout_editor_absoluteY="0dp"
+            tools:layout_editor_absoluteX="0dp"
+            android:layout_alignTop="@+id/userName"
+            android:layout_alignLeft="@+id/userName"
+            android:layout_alignStart="@+id/userName"
+            android:layout_marginTop="60dp"
+            android:layout_alignRight="@+id/userName"
+            android:layout_alignEnd="@+id/userName" />
 
-        <RelativeLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent">
-
-            <Button
-                android:text="Log In"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:id="@+id/button"
-                android:textAlignment="center"
-                android:elevation="0dp"
-                android:layout_centerHorizontal="true"
-                tools:layout_marginTop="?attr/dialogPreferredPadding"
-                android:onClick="login" />
-        </RelativeLayout>
-
-    </LinearLayout>
+    </RelativeLayout>
 
 </android.support.design.widget.CoordinatorLayout>

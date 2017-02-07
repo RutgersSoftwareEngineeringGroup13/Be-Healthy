@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.group13.behealthy.Input_Data">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <TextView
+            android:text="@string/diet"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/Diet"
+            android:textSize="36sp"
+            android:layout_marginTop="35dp"
+            android:layout_alignParentTop="true"
+            android:layout_centerHorizontal="true" />
+
+        <Button
+            android:text="@string/next"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/button2"
+            android:layout_marginBottom="125dp"
+            android:layout_alignParentBottom="true"
+            android:layout_centerHorizontal="true" />
+
+        <RadioGroup
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/Diet"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="70dp"
+            android:id="@+id/radioG1">
+
+            <RadioButton
+                android:text="@string/plan1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/plan1"
+                android:textSize="24sp"
+                android:layout_below="@+id/Diet"
+                android:layout_alignLeft="@+id/Diet"
+                android:layout_alignStart="@+id/Diet" />
+
+            <RadioButton
+                android:text="@string/plan2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/plan2"
+                android:textSize="24sp"
+                android:layout_below="@+id/plan1"
+                android:layout_alignLeft="@+id/plan1"
+                android:layout_alignStart="@+id/plan1"
+                android:layout_marginTop="34dp"
+                android:layout_weight="1" />
+
+            <RadioButton
+                android:text="@string/plan3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/plan3"
+                android:textSize="24sp"
+                android:layout_below="@+id/plan2"
+                android:layout_alignLeft="@+id/plan2"
+                android:layout_alignStart="@+id/plan2"
+                android:layout_marginTop="34dp"
+                android:layout_weight="1" />
+
+            <RadioButton
+                android:text="@string/plan4"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/plan4"
+                android:textSize="24sp"
+                android:layout_below="@+id/plan3"
+                android:layout_alignLeft="@+id/plan3"
+                android:layout_alignStart="@+id/plan3"
+                android:layout_marginTop="34dp"
+                android:layout_weight="1" />
+        </RadioGroup>
+
+    </RelativeLayout>
+</LinearLayout>

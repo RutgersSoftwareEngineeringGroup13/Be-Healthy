@@ -1,5 +1,6 @@
 package com.group13.behealthy;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.widget.Button;
 import android.widget.EditText;
@@ -33,6 +34,7 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View view) {
                 if (ed1.getText().toString().equals("admin") && ed2.getText().toString().equals("admin")) {
                     Toast.makeText(getApplicationContext(), "Redirecting...", Toast.LENGTH_SHORT).show();
+                    startActivity(new Intent(MainActivity.this, Input_Data.class));
                 } else {
                     Toast.makeText(getApplicationContext(), "Wrong Credentials", Toast.LENGTH_SHORT).show();
                     counter--;
