@@ -1,11 +1,9 @@
 package com.group13.behealthy;
 
-import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
-import android.widget.EditText;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.Toast;
@@ -13,14 +11,14 @@ import android.widget.Toast;
 /**
  * Created by stephan on 2/6/17.
  */
-public class Input_Data extends AppCompatActivity {
+public class Select_Plan extends AppCompatActivity {
     RadioGroup r1;
     RadioButton rb;
     Button b2;
 
     protected void onCreate(Bundle savedInsuranceState){
         super.onCreate(savedInsuranceState);
-        setContentView(R.layout.input_data);
+        setContentView(R.layout.select_plan);
         r1 = (RadioGroup) findViewById(R.id.radioG1);
         b2 = (Button)findViewById(R.id.button2);
         b2.setOnClickListener(new View.OnClickListener() {
