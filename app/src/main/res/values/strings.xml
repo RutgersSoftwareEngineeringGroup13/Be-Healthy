@@ -3,9 +3,9 @@
     <string name="action_settings">Settings</string>
     <string name="welcome">Welcome to Be Healthy!</string>
     <string name="diet">Please Choose a Diet Plan:</string>
-    <string name="plan1">Diet Plan #1</string>
-    <string name="plan2">Diet Plan #2</string>
-    <string name="plan3">Diet Plan #3</string>
+    <string name="plan1">Lose Weight</string>
+    <string name="plan2">Gain Weight </string>
+    <string name="plan3">Maintain Weight</string>
     <string name="plan4">I Don\'t Want a Diet Plan</string>
     <string name="next">Next</string>
     <string name="drawer_open">Open navigation drawer</string>
