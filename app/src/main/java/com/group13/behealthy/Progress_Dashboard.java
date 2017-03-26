@@ -3,13 +3,11 @@ package com.group13.behealthy;
 import android.app.Fragment;
 import android.app.FragmentManager;
 import android.content.Context;
-import android.content.res.Configuration;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.widget.DrawerLayout;
-import android.support.v7.app.ActionBarActivity;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.MenuItem;
 import android.view.View;
@@ -69,18 +67,29 @@ public class Progress_Dashboard extends AppCompatActivity{
             * is selected.
             * */
             private void selectItemFromDrawer(int position) {
-                Fragment fragment = new PreferencesFragment();
-
-                FragmentManager fragmentManager = getFragmentManager();
-                fragmentManager.beginTransaction()
-                        .replace(R.id.mainContent, fragment)
-                        .commit();
-
                 mDrawerList.setItemChecked(position, true);
-                setTitle(mNavItems.get(position).mTitle);
-
-                // Close the drawer
                 mDrawerLayout.closeDrawer(mDrawerPane);
+                //Go to specific location depending on user input
+                Fragment fragment = null;
+                switch(position){
+                    case 0: break;
+                    case 1: startActivity(new Intent(Progress_Dashboard.this, Select_Plan.class));
+                            break;
+                    case 2: startActivity(new Intent(Progress_Dashboard.this, Select_Plan.class));
+                            break;
+                    case 3: setTitle(mNavItems.get(position).mTitle);
+                            fragment = new Food_Intake();
+                            FragmentManager fragmentManager = getFragmentManager();
+                            fragmentManager.beginTransaction()
+                                .replace(R.id.mainContent, fragment)
+                                .commit();
+                            break;
+                    case 4: startActivity(new Intent(Progress_Dashboard.this, Select_Plan.class));
+                            break;
+                    case 5: startActivity(new Intent(Progress_Dashboard.this, Select_Plan.class));
+                            break;
+                    default: break;
+                }
             }
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
@@ -118,7 +127,7 @@ public class Progress_Dashboard extends AppCompatActivity{
             return true;
         }
 
-        // Handle your other action bar items...
+        // Handle other action bar items...
 
         return super.onOptionsItemSelected(item);
     }
