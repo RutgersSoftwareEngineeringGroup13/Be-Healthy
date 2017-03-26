@@ -147,6 +147,7 @@ public class Progress_Dashboard extends AppCompatActivity{
             mIcon = icon;
         }
     }
+
     class DrawerListAdapter extends BaseAdapter {
 
         Context mContext;
