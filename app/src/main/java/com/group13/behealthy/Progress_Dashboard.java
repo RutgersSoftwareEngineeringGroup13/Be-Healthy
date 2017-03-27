@@ -2,6 +2,7 @@ package com.group13.behealthy;
 
 import android.app.Fragment;
 import android.app.FragmentManager;
+import android.app.FragmentTransaction;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
@@ -72,21 +73,22 @@ public class Progress_Dashboard extends AppCompatActivity{
                 //Go to specific location depending on user input
                 Fragment fragment = null;
                 switch(position){
-                    case 0: break;
-                    case 1: startActivity(new Intent(Progress_Dashboard.this, Select_Plan.class));
+                    case 0: startActivity(new Intent(Progress_Dashboard.this, Progress_Dashboard.class));
+                        break;
+                    case 1: startActivity(new Intent(Progress_Dashboard.this, Progress_Dashboard.class));
                             break;
-                    case 2: startActivity(new Intent(Progress_Dashboard.this, Select_Plan.class));
+                    case 2: startActivity(new Intent(Progress_Dashboard.this, Progress_Dashboard.class));
                             break;
                     case 3: setTitle(mNavItems.get(position).mTitle);
                             fragment = new Food_Intake();
-                            FragmentManager fragmentManager = getFragmentManager();
-                            fragmentManager.beginTransaction()
-                                .replace(R.id.mainContent, fragment)
-                                .commit();
+                            FragmentTransaction transaction = getFragmentManager().beginTransaction();
+                            transaction.replace(R.id.mainContent, fragment);
+                            transaction.addToBackStack(null);
+                            transaction.commit();
                             break;
-                    case 4: startActivity(new Intent(Progress_Dashboard.this, Select_Plan.class));
+                    case 4: startActivity(new Intent(Progress_Dashboard.this, Progress_Dashboard.class));
                             break;
-                    case 5: startActivity(new Intent(Progress_Dashboard.this, Select_Plan.class));
+                    case 5: startActivity(new Intent(Progress_Dashboard.this, Progress_Dashboard.class));
                             break;
                     default: break;
                 }
