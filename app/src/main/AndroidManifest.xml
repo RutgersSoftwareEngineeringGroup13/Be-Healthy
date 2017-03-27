@@ -36,6 +36,11 @@
             android:name=".Food_Intake"
             android:label="Food Intake">
         </activity>
+
+        <activity
+            android:name=".Personal_Info"
+            android:label="Be healthy">
+    </activity>
     </application>
 
 </manifest>
