@@ -30,7 +30,7 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View view) {
                 if (ed1.getText().toString().equals("admin") && ed2.getText().toString().equals("admin")) {
                     Toast.makeText(getApplicationContext(), "Redirecting...", Toast.LENGTH_SHORT).show();
-                    startActivity(new Intent(MainActivity.this, Progress_Dashboard.class));
+                    startActivity(new Intent(MainActivity.this, Select_Plan.class));
                 } else {
                     Toast.makeText(getApplicationContext(), "Wrong Credentials", Toast.LENGTH_SHORT).show();
                     counter--;
