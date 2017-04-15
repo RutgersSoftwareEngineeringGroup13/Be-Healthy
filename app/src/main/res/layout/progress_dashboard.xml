@@ -7,7 +7,14 @@
     tools:context="com.group13.behealthy.Progress_Dashboard">
 
     <!-- The main content view -->
+
+    <com.github.mikephil.charting.charts.PieChart
+        android:id="@+id/chart"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
+
     <RelativeLayout
+
         android:id="@+id/mainContent"
         android:layout_width="match_parent"
         android:layout_height="match_parent" >
@@ -16,36 +23,35 @@
             android:id="@+id/textView5"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="25dp"
             android:text="Calories Eaten:"
-            android:textSize="30sp"
-            android:layout_below="@+id/textView4"
-            android:layout_alignLeft="@+id/textView4"
-            android:layout_alignStart="@+id/textView4" />
+            android:textSize="12sp"
+            android:layout_above="@+id/textView3"
+            android:layout_alignRight="@+id/textView4"
+            android:layout_alignEnd="@+id/textView4"
+            android:textColor="#7e0019"/>
 
         <TextView
             android:id="@+id/textView4"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="20dp"
-            android:layout_marginStart="20dp"
-            android:layout_marginTop="11dp"
+            android:layout_above="@+id/textView5"
+            android:layout_alignLeft="@+id/Dashboard"
+            android:layout_alignStart="@+id/Dashboard"
             android:text="Today's Goal: "
-            android:textSize="30sp"
-            android:layout_below="@+id/multiAutoCompleteTextView"
-            android:layout_alignParentLeft="true"
-            android:layout_alignParentStart="true" />
+            android:textColor="#7e0019"
+            android:textSize="12sp" />
 
         <TextView
             android:id="@+id/textView3"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_alignLeft="@+id/textView5"
-            android:layout_alignStart="@+id/textView5"
-            android:layout_below="@+id/textView5"
-            android:layout_marginTop="26dp"
+            android:layout_alignLeft="@+id/textView4"
+            android:layout_alignStart="@+id/textView4"
+            android:layout_centerVertical="true"
+            android:fontFamily="sans-serif"
             android:text="Calories Left:"
-            android:textSize="30sp" />
+            android:textColor="#7e0019"
+            android:textSize="12sp" />
 
         <Button
             android:id="@+id/Counter"
@@ -56,14 +62,21 @@
             android:layout_alignParentBottom="true"
             android:layout_centerHorizontal="true" />
 
-        <MultiAutoCompleteTextView
-            android:id="@+id/multiAutoCompleteTextView"
+        <TextView
+            android:id="@+id/Dashboard"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="18dp"
             android:text="Dashboard"
+            android:textColor="#F00"
+            android:textColorLink="@android:color/holo_red_light"
+            android:textSize="30sp"
+            android:typeface="serif"
+            android:visibility="visible"
+            android:layout_alignRight="@+id/Counter"
+            android:layout_alignEnd="@+id/Counter"
             android:layout_alignParentTop="true"
-            android:layout_centerHorizontal="true" />
+            android:onClick="nutrition_counter"/>
+
 
     </RelativeLayout>
 
@@ -127,6 +140,9 @@
             android:layout_below="@+id/profileBox"
             android:choiceMode="singleChoice"
             android:background="#ffffffff" />
+
+
+
 
     </RelativeLayout>
 

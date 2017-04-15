@@ -20,8 +20,15 @@ import android.widget.ListView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
-import java.util.ArrayList;
+import com.github.mikephil.charting.charts.PieChart;
+import com.github.mikephil.charting.data.PieData;
+import com.github.mikephil.charting.data.PieDataSet;
+import com.github.mikephil.charting.data.PieEntry;
+import com.github.mikephil.charting.utils.ColorTemplate;
 
+
+import java.util.ArrayList;
+import java.util.List;
 
 
 /**
@@ -29,13 +36,18 @@ import java.util.ArrayList;
  */
 
 public class Progress_Dashboard extends AppCompatActivity{
+
+    float testdata[] = {98.8f, 123.4f, 126.4f};
+    String calories[] = {"Carbs", "Fats", "Protein"};
+
+
     private static String TAG = MainActivity.class.getSimpleName();
 
     ListView mDrawerList;
     RelativeLayout mDrawerPane;
     private ActionBarDrawerToggle mDrawerToggle;
     private DrawerLayout mDrawerLayout;
-    private String mActivityTitle;
+    private String Progress_Dashboard;
 
     ArrayList<NavItem> mNavItems = new ArrayList<NavItem>();
 
@@ -44,6 +56,11 @@ public class Progress_Dashboard extends AppCompatActivity{
         super.onCreate(savedInstanceState);
         setContentView(R.layout.progress_dashboard);
 
+        setupPieChart ();
+
+
+
+
         mNavItems.add(new NavItem("Dashboard", "View Your Progress", R.drawable.ic_action_home));
         mNavItems.add(new NavItem("Friends", "View Your Friends' Profile", R.drawable.ic_action_friends));
         mNavItems.add(new NavItem("Pictures", "View Your Pictures", R.drawable.ic_action_pictures));
@@ -51,9 +68,10 @@ public class Progress_Dashboard extends AppCompatActivity{
         mNavItems.add(new NavItem("Macronutrients", "Edit Your Macronutrient Goals", R.drawable.ic_action_macros));
         mNavItems.add(new NavItem("Preferences", "Change Your Preferences", R.drawable.ic_action_settings));
 
+
         // DrawerLayout
         mDrawerLayout = (DrawerLayout) findViewById(R.id.drawerLayout);
-        mActivityTitle = getTitle().toString();
+        Progress_Dashboard = getTitle().toString();
 
         // Populate the Navigtion Drawer with options
         mDrawerPane = (RelativeLayout) findViewById(R.id.drawerPane);
@@ -76,20 +94,20 @@ public class Progress_Dashboard extends AppCompatActivity{
                     case 0: startActivity(new Intent(Progress_Dashboard.this, Progress_Dashboard.class));
                         break;
                     case 1: startActivity(new Intent(Progress_Dashboard.this, Progress_Dashboard.class));
-                            break;
+                        break;
                     case 2: startActivity(new Intent(Progress_Dashboard.this, Progress_Dashboard.class));
-                            break;
+                        break;
                     case 3: setTitle(mNavItems.get(position).mTitle);
-                            fragment = new Food_Intake();
-                            FragmentTransaction transaction = getFragmentManager().beginTransaction();
-                            transaction.replace(R.id.mainContent, fragment);
-                            transaction.addToBackStack(null);
-                            transaction.commit();
-                            break;
+                        fragment = new Food_Intake();
+                        FragmentTransaction transaction = getFragmentManager().beginTransaction();
+                        transaction.replace(R.id.mainContent, fragment);
+                        transaction.addToBackStack(null);
+                        transaction.commit();
+                        break;
                     case 4: startActivity(new Intent(Progress_Dashboard.this, Progress_Dashboard.class));
-                            break;
+                        break;
                     case 5: startActivity(new Intent(Progress_Dashboard.this, Progress_Dashboard.class));
-                            break;
+                        break;
                     default: break;
                 }
             }
@@ -117,9 +135,14 @@ public class Progress_Dashboard extends AppCompatActivity{
                 getActionBar().setTitle("Nav2");
             }
         };
+
+        // These 2 lines crash progress_dashboard for some reason
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setHomeButtonEnabled(true);
     }
+
+
+
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         // Pass the event to ActionBarDrawerToggle
@@ -197,5 +220,24 @@ public class Progress_Dashboard extends AppCompatActivity{
 
             return view;
         }
+
+    }
+    private void setupPieChart() {
+        // Populating a list of PieEntries:
+        List<PieEntry> pieEntries = new ArrayList<>();
+        for (int i = 0; i < testdata.length; i++) {
+            pieEntries.add(new PieEntry(testdata[i], calories[i]));
+        }
+
+        PieDataSet dataSet = new PieDataSet(pieEntries, "Calories you should consume today");
+        dataSet.setColors(ColorTemplate.COLORFUL_COLORS);
+        PieData data = new PieData(dataSet);
+
+        // Get the chart:
+        PieChart chart = (PieChart) findViewById(R.id.chart);
+        chart.setData(data);
+        chart.animateY(1000);
+        chart.invalidate();
+
     }
 }
