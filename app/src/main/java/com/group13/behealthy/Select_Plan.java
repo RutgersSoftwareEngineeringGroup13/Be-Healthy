@@ -48,9 +48,13 @@ public class Select_Plan extends AppCompatActivity {
         });
     }
     public void SPnext(View v) {
-        if (v.getId() == R.id.BSPnext) {
+        if (r1.getCheckedRadioButtonId() != -1) {
             Intent j = new Intent(Select_Plan.this, Personal_Info.class);
             startActivity(j);
+        }
+        else if(r1.getCheckedRadioButtonId() == -1) {
+            Toast.makeText(getApplicationContext(), "Please Select an Option", Toast.LENGTH_SHORT).show();
+
         }
     }
 }
