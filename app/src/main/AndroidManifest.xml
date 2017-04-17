@@ -1,23 +1,25 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.group13.behealthy" >
+    package="com.group13.behealthy">
 
     <supports-screens
         android:largeScreens="true"
         android:normalScreens="true"
         android:smallScreens="true"
-        android:xlargeScreens="true"/>
+        android:xlargeScreens="true" />
+
+    <uses-permission android:name="android.permission.INTERNET" />
 
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
         android:supportsRtl="true"
-        android:theme="@style/AppTheme" >
+        android:theme="@style/AppTheme">
         <activity
-            android:name=".MainActivity"
+            android:name=".SignupActivity"
             android:label="@string/app_name"
-            android:theme="@style/AppTheme.NoActionBar" >
+            android:theme="@style/AppTheme.NoActionBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -26,21 +28,38 @@
         </activity>
         <activity
             android:name=".Select_Plan"
-            android:label="@string/app_name" >
-        </activity>
+            android:label="@string/app_name" />
         <activity
             android:name=".Progress_Dashboard"
-            android:label="@string/app_name">
-        </activity>
+            android:label="@string/app_name" />
         <activity
             android:name=".Food_Intake"
-            android:label="Food Intake">
-        </activity>
-
+            android:label="Food Intake" />
+        <activity
+            android:name=".Weight_Progress"
+            android:label="Weight Progress" />
         <activity
             android:name=".Personal_Info"
-            android:label="Be healthy">
+            android:label="Be healthy" />
+        <activity
+        android:name=".ResetPasswordActivity"
+        android:label="@string/title_activity_reset_password"
+        android:theme="@style/AppTheme.NoActionBar">
+        </activity>
+        <activity
+        android:name=".LoginActivity"
+        android:label="@string/title_activity_login"
+        android:theme="@style/AppTheme.NoActionBar">
     </activity>
+
+        <activity
+            android:name=".MainActivity"
+            android:label="main_activity"
+            android:theme="@style/AppTheme.NoActionBar">
+        </activity>
+
+
+
     </application>
 
 </manifest>
