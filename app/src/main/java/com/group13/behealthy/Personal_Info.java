@@ -6,10 +6,14 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.RadioButton;
+import android.widget.RadioGroup;
+import android.widget.Toast;
 
 
 public class Personal_Info extends AppCompatActivity {
-    EditText age, feet, inches, gender, weight;
+    EditText age, feet, inches, weight;
+    RadioButton gender;
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.personal_info);
@@ -17,12 +21,21 @@ public class Personal_Info extends AppCompatActivity {
         feet = (EditText)findViewById(R.id.HeightFeet);
         inches = (EditText)findViewById(R.id.HeightInches);
         weight = (EditText)findViewById(R.id.WeightInput);
-        gender = (EditText)findViewById(R.id.GenderInput);
+        gender = (RadioButton)findViewById(R.id.GenderInput1);
+
+
+
     };
     public void PInext(View v) {
-        if (v.getId() == R.id.BPInext) {
+        if (!age.getText().toString().isEmpty() && !feet.getText().toString().isEmpty()
+                && !inches.getText().toString().isEmpty()
+                && !weight.getText().toString().isEmpty()
+                && gender.isChecked() ) {
             Intent j = new Intent(Personal_Info.this, Progress_Dashboard.class);
             startActivity(j);
+        }
+        else{
+            Toast.makeText(getApplicationContext(), "Please fill out the form", Toast.LENGTH_SHORT).show();
         }
     }
 
