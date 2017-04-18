@@ -33,6 +33,7 @@ public class Personal_Info extends AppCompatActivity {
                 && gender.getCheckedRadioButtonId()!= -1 ) {
             Intent j = new Intent(Personal_Info.this, Progress_Dashboard.class);
             startActivity(j);
+            finish();
         }
         else{
             Toast.makeText(getApplicationContext(), "Please fill out the form", Toast.LENGTH_SHORT).show();
