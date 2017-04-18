@@ -13,7 +13,7 @@ import android.widget.Toast;
 
 public class Personal_Info extends AppCompatActivity {
     EditText age, feet, inches, weight;
-    RadioButton gender;
+    RadioGroup gender;
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.personal_info);
@@ -21,7 +21,7 @@ public class Personal_Info extends AppCompatActivity {
         feet = (EditText)findViewById(R.id.HeightFeet);
         inches = (EditText)findViewById(R.id.HeightInches);
         weight = (EditText)findViewById(R.id.WeightInput);
-        gender = (RadioButton)findViewById(R.id.GenderInput1);
+        gender = (RadioGroup) findViewById(R.id.GenderInput);
 
 
 
@@ -30,7 +30,7 @@ public class Personal_Info extends AppCompatActivity {
         if (!age.getText().toString().isEmpty() && !feet.getText().toString().isEmpty()
                 && !inches.getText().toString().isEmpty()
                 && !weight.getText().toString().isEmpty()
-                && gender.isChecked() ) {
+                && gender.getCheckedRadioButtonId()!= -1 ) {
             Intent j = new Intent(Personal_Info.this, Progress_Dashboard.class);
             startActivity(j);
         }

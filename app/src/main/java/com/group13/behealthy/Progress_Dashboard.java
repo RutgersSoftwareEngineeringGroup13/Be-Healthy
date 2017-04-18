@@ -106,7 +106,12 @@ public class Progress_Dashboard extends AppCompatActivity{
                         break;
                     case 4: startActivity(new Intent(Progress_Dashboard.this, Progress_Dashboard.class));
                         break;
-                    case 5: startActivity(new Intent(Progress_Dashboard.this, Progress_Dashboard.class));
+                    case 5: setTitle(mNavItems.get(position).mTitle);
+                        fragment = new Preferences();
+                        transaction = getFragmentManager().beginTransaction();
+                        transaction.replace(R.id.mainContent, fragment);
+                        transaction.addToBackStack(null);
+                        transaction.commit();
                         break;
                     default: break;
                 }

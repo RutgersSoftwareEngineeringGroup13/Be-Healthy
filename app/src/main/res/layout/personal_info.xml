@@ -23,7 +23,7 @@
             android:textSize="18sp" />
 
         <TextView
-            android:id="@+id/age:"
+            android:id="@+id/age"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_weight="1"
@@ -98,7 +98,7 @@
         android:orientation="vertical">
 
         <TextView
-            android:id="@+id/gender:"
+            android:id="@+id/gender"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_weight="1"
@@ -107,17 +107,29 @@
             android:text="Gender:"
             android:textAppearance="@style/TextAppearance.AppCompat.Body2" />
 
-        <EditText
+        <RadioGroup
             android:id="@+id/GenderInput"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:ems="10"
-            android:inputType="textPersonName"
-            android:textAppearance="@style/TextAppearance.AppCompat" />
+            android:layout_height="match_parent"
+            android:layout_weight="1" >
+
+            <RadioButton
+                android:id="@+id/radioButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="Male" />
+
+            <RadioButton
+                android:id="@+id/radioButton2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="Female" />
+        </RadioGroup>
 
         <TextView
-            android:id="@+id/weight:"
+            android:id="@+id/weight"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_weight="1"
