@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:orientation="vertical" android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/white_square">
@@ -7,20 +8,50 @@
     <TextView
         android:id="@+id/pref"
         android:layout_width="match_parent"
+        android:layout_marginTop="20dp"
+        android:layout_height="50dp"
         android:layout_marginLeft="20dp"
         android:layout_marginRight="20dp"
-        android:layout_height="90dp"
         android:clickable="true"
-        android:gravity="center|center_vertical"
-        android:text="Preferences"
-        android:textSize="30sp" />
+        android:gravity="center_vertical"
+        android:text="USER PROFILE"
+        android:textColor="@color/bg_register"
+        android:textSize="18sp"
+        android:textStyle="bold" />
 
     <View
         android:id="@+id/view1"
         android:layout_width="match_parent"
         android:layout_height="1dp"
-        android:background="@android:color/darker_gray"
-        android:layout_below="@+id/pref" />
+        android:layout_below="@+id/pref"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        android:background="@android:color/black" />
+
+    <TextView
+        android:id="@+id/sett"
+        android:layout_width="match_parent"
+        android:layout_marginTop="20dp"
+        android:layout_height="50dp"
+        android:layout_alignLeft="@+id/changePass"
+        android:layout_alignStart="@+id/changePass"
+        android:layout_below="@+id/changePass"
+        android:clickable="true"
+        android:gravity="center_vertical"
+        android:text="UPDATE SETTINGS"
+        android:textColor="@color/bg_register"
+        android:textSize="18sp"
+        android:textStyle="bold" />
+
+    <View
+        android:id="@+id/viewsett"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_below="@+id/sett"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        android:background="@android:color/black" />
+
 
     <TextView
         android:id="@+id/dplan"
@@ -30,35 +61,19 @@
         android:gravity="center_vertical"
         android:text="Change Diet Plan"
         android:textSize="24sp"
-        android:layout_below="@+id/pref"
-        android:layout_alignLeft="@+id/pref"
-        android:layout_alignStart="@+id/pref" />
+        android:layout_below="@+id/sett"
+        android:layout_alignLeft="@+id/sett"
+        android:layout_alignStart="@+id/sett" />
 
     <View
         android:id="@+id/view2"
         android:layout_width="match_parent"
         android:layout_height="1dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
         android:background="@android:color/darker_gray"
         android:layout_below="@+id/dplan" />
 
-    <TextView
-        android:id="@+id/h"
-        android:layout_width="match_parent"
-        android:layout_height="70dp"
-        android:clickable="true"
-        android:gravity="center_vertical"
-        android:text="Change Height"
-        android:textSize="24sp"
-        android:layout_below="@+id/dplan"
-        android:layout_alignLeft="@+id/dplan"
-        android:layout_alignStart="@+id/dplan" />
-
-    <View
-        android:id="@+id/view3"
-        android:layout_width="match_parent"
-        android:layout_height="1dp"
-        android:background="@android:color/darker_gray"
-        android:layout_below="@+id/h" />
 
     <TextView
         android:id="@+id/notify"
@@ -68,14 +83,16 @@
         android:gravity="center_vertical"
         android:text="Notifications"
         android:textSize="24sp"
-        android:layout_below="@+id/h"
-        android:layout_alignLeft="@+id/h"
-        android:layout_alignStart="@+id/h" />
+        android:layout_below="@+id/dplan"
+        android:layout_alignLeft="@+id/dplan"
+        android:layout_alignStart="@+id/dplan" />
 
     <View
         android:id="@+id/view4"
         android:layout_width="match_parent"
         android:layout_height="1dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
         android:background="@android:color/darker_gray"
         android:layout_below="@+id/notify" />
 
@@ -83,18 +100,20 @@
         android:id="@+id/changePass"
         android:layout_width="match_parent"
         android:layout_height="70dp"
+        android:layout_alignLeft="@+id/pref"
+        android:layout_alignStart="@+id/pref"
+        android:layout_below="@+id/pref"
         android:clickable="true"
         android:gravity="center_vertical"
         android:text="Change Password"
-        android:textSize="24sp"
-        android:layout_below="@+id/notify"
-        android:layout_alignLeft="@+id/notify"
-        android:layout_alignStart="@+id/notify" />
+        android:textSize="24sp" />
 
     <View
         android:id="@+id/view5"
         android:layout_width="match_parent"
         android:layout_height="1dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
         android:background="@android:color/darker_gray"
         android:layout_below="@+id/changePass" />
 

@@ -63,16 +63,6 @@
             android:textColor="#7e0019"
             android:textSize="12sp" />
 
-        <Button
-            android:id="@+id/Counter"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="22dp"
-            android:text="Nutrition Counter"
-            android:onClick="Weight_Progress"
-            android:layout_alignParentBottom="true"
-            android:layout_centerHorizontal="true" />
-
         <TextView
             android:id="@+id/Dashboard"
             android:layout_width="wrap_content"
@@ -83,10 +73,9 @@
             android:textSize="30sp"
             android:typeface="serif"
             android:visibility="visible"
-            android:layout_alignRight="@+id/Counter"
-            android:layout_alignEnd="@+id/Counter"
+            android:onClick="nutrition_counter"
             android:layout_alignParentTop="true"
-            android:onClick="nutrition_counter"/>
+            android:layout_centerHorizontal="true" />
 
 
     </RelativeLayout>

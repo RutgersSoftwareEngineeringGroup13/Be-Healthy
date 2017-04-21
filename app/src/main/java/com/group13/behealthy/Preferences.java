@@ -59,6 +59,7 @@ public class Preferences extends Fragment {
         newPassword.setInputType(InputType.TYPE_TEXT_VARIATION_PASSWORD);
         TextView diet = (TextView)rootView.findViewById(R.id.dplan);
         TextView changePassword = (TextView)rootView.findViewById(R.id.changePass);
+        TextView notification = (TextView)rootView.findViewById(R.id.notify);
         CharSequence[] plans = new CharSequence[4];
         plans[0] = "Lose Weight";
         plans[1] = "Gain Weight";
@@ -66,6 +67,7 @@ public class Preferences extends Fragment {
         plans[3] = "I Don\'t Want a Diet Plan";
         final AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
         final AlertDialog.Builder newPass = new AlertDialog.Builder(getActivity());
+        final AlertDialog.Builder notify = new AlertDialog.Builder(getActivity());
         builder.setTitle("Select a Diet Plan")
                 .setItems(plans, new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog, int which) {
@@ -87,7 +89,7 @@ public class Preferences extends Fragment {
             public void onClick(DialogInterface dialog, int which) {
                 if (user != null && !newPassword.getText().toString().trim().equals("")) {
                     if (newPassword.getText().toString().trim().length() < 6) {
-                        newPassword.setError("Password too short, enter minimum 6 characters");
+                        Toast.makeText(rootView.getContext(), "Password too short, enter minimum 6 characters", Toast.LENGTH_SHORT).show();
                     } else {
                         user.updatePassword(newPassword.getText().toString().trim())
                                 .addOnCompleteListener(new OnCompleteListener<Void>() {
@@ -96,6 +98,8 @@ public class Preferences extends Fragment {
                                         if (task.isSuccessful()) {
                                             Toast.makeText(rootView.getContext(), "Password is updated, sign in with new password!", Toast.LENGTH_SHORT).show();
                                             signOut();
+                                            Intent j = new Intent(rootView.getContext(), LoginActivity.class);
+                                            startActivity(j);
                                         } else {
                                             Toast.makeText(rootView.getContext(), "Failed to update password!", Toast.LENGTH_SHORT).show();
                                         }
@@ -120,12 +124,34 @@ public class Preferences extends Fragment {
                 builder.show();
             }
         });
+        final AlertDialog alert = newPass.create();
         changePassword.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v){
-                newPass.show();
+                alert.show();
             }
         });
+
+        notify.setTitle("Notifications");
+        notify.setPositiveButton("ON", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                Toast.makeText(rootView.getContext(), "Notifications Turned On", Toast.LENGTH_SHORT).show();
+            }
+        });
+        notify.setNegativeButton("OFF", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                Toast.makeText(rootView.getContext(), "Notifications Turned Off", Toast.LENGTH_SHORT).show();
+            }
+        });
+        notification.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v){
+                notify.show();
+            }
+        });
+
         return rootView;
     }
 
