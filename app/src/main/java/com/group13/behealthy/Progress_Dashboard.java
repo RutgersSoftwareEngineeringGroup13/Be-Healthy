@@ -21,9 +21,12 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.github.mikephil.charting.charts.PieChart;
+import com.github.mikephil.charting.components.Description;
+import com.github.mikephil.charting.components.Legend;
 import com.github.mikephil.charting.data.PieData;
 import com.github.mikephil.charting.data.PieDataSet;
 import com.github.mikephil.charting.data.PieEntry;
+import com.github.mikephil.charting.formatter.PercentFormatter;
 import com.github.mikephil.charting.utils.ColorTemplate;
 
 
@@ -236,6 +239,8 @@ public class Progress_Dashboard extends AppCompatActivity{
 
         PieDataSet dataSet = new PieDataSet(pieEntries, "Calories you should consume today");
         dataSet.setColors(ColorTemplate.COLORFUL_COLORS);
+        dataSet.setValueTextSize(25f);
+
         PieData data = new PieData(dataSet);
 
         // Get the chart:
@@ -243,6 +248,11 @@ public class Progress_Dashboard extends AppCompatActivity{
         chart.setData(data);
         chart.animateY(1000);
         chart.invalidate();
+        Legend l = chart.getLegend();
+        l.setEnabled(false);
+        Description des = chart.getDescription();
+        des.setEnabled(false);
+
 
     }
 

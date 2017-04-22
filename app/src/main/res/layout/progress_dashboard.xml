@@ -10,8 +10,12 @@
     <!-- The main content view -->
     <com.github.mikephil.charting.charts.PieChart
         android:id="@+id/chart"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent" />
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="200dp"
+        android:layout_marginLeft="@android:dimen/notification_large_icon_height"
+        android:layout_marginRight="@android:dimen/notification_large_icon_height"
+        android:layout_marginTop="50dp"/>
 
     <ScrollView
         android:layout_width="match_parent"
@@ -35,33 +39,36 @@
             android:layout_height="wrap_content"
             android:text="Calories Eaten:"
             android:textSize="12sp"
+            android:textColor="#7e0019"
             android:layout_above="@+id/textView3"
-            android:layout_alignRight="@+id/textView4"
-            android:layout_alignEnd="@+id/textView4"
-            android:textColor="#7e0019"/>
+            android:layout_alignLeft="@+id/textView3"
+            android:layout_alignStart="@+id/textView3"
+            android:layout_marginBottom="17dp" />
 
         <TextView
             android:id="@+id/textView4"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_above="@+id/textView5"
-            android:layout_alignLeft="@+id/Dashboard"
-            android:layout_alignStart="@+id/Dashboard"
             android:text="Today's Goal: "
             android:textColor="#7e0019"
-            android:textSize="12sp" />
+            android:textSize="12sp"
+            android:layout_marginBottom="19dp"
+            android:layout_above="@+id/textView5"
+            android:layout_toLeftOf="@+id/Dashboard"
+            android:layout_toStartOf="@+id/Dashboard" />
 
         <TextView
             android:id="@+id/textView3"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_alignLeft="@+id/textView4"
-            android:layout_alignStart="@+id/textView4"
-            android:layout_centerVertical="true"
             android:fontFamily="sans-serif"
             android:text="Calories Left:"
             android:textColor="#7e0019"
-            android:textSize="12sp" />
+            android:textSize="12sp"
+            android:layout_alignParentBottom="true"
+            android:layout_alignLeft="@+id/textView4"
+            android:layout_alignStart="@+id/textView4"
+            android:layout_marginBottom="38dp" />
 
         <TextView
             android:id="@+id/Dashboard"
