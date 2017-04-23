@@ -20,5 +20,6 @@
         android:layout_centerHorizontal="true"
         android:layout_marginBottom="16dp"
         android:layout_marginTop="16dp"
-        android:text="SNAP" />
+        android:text="SNAP"
+        android:background="@color/colorAccent"/>
 </RelativeLayout>

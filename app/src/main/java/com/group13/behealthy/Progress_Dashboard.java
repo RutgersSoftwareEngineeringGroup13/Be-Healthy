@@ -1,7 +1,6 @@
 package com.group13.behealthy;
 
 import android.app.Fragment;
-import android.app.FragmentManager;
 import android.app.FragmentTransaction;
 import android.content.Context;
 import android.content.Intent;
@@ -26,9 +25,7 @@ import com.github.mikephil.charting.components.Legend;
 import com.github.mikephil.charting.data.PieData;
 import com.github.mikephil.charting.data.PieDataSet;
 import com.github.mikephil.charting.data.PieEntry;
-import com.github.mikephil.charting.formatter.PercentFormatter;
 import com.github.mikephil.charting.utils.ColorTemplate;
-
 
 import java.util.ArrayList;
 import java.util.List;
@@ -243,16 +240,25 @@ public class Progress_Dashboard extends AppCompatActivity{
         }
 
         PieDataSet dataSet = new PieDataSet(pieEntries, "Calories you should consume today");
-        dataSet.setColors(ColorTemplate.COLORFUL_COLORS);
-        dataSet.setValueTextSize(25f);
+        dataSet.setColors(ColorTemplate.MATERIAL_COLORS);
+        dataSet.setValueTextSize(30f);
 
         PieData data = new PieData(dataSet);
 
         // Get the chart:
         PieChart chart = (PieChart) findViewById(R.id.chart);
+        chart.animateXY(1400, 1400);
+        chart.setTouchEnabled( true );
+        chart.setRotationEnabled( true );
+        chart.isUsePercentValuesEnabled();
+        //chart.getCircleBox();
+        chart.getHoleRadius();
+        chart.setHoleRadius(1f);
+        chart.isUsePercentValuesEnabled();
+        chart.setUsePercentValues( true );
         chart.setData(data);
-        chart.animateY(1000);
-        chart.invalidate();
+
+        //chart.invalidate();
         Legend l = chart.getLegend();
         l.setEnabled(false);
         Description des = chart.getDescription();

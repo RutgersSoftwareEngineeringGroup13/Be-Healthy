@@ -3,7 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:orientation="vertical" android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/white_square">
+    android:background="?attr/colorPrimaryDark">
 
     <TextView
         android:id="@+id/pref"
@@ -15,7 +15,7 @@
         android:clickable="true"
         android:gravity="center_vertical"
         android:text="USER PROFILE"
-        android:textColor="@color/bg_register"
+        android:textColor="@android:color/white"
         android:textSize="18sp"
         android:textStyle="bold" />
 
@@ -26,7 +26,7 @@
         android:layout_below="@+id/pref"
         android:layout_marginLeft="20dp"
         android:layout_marginRight="20dp"
-        android:background="@android:color/black" />
+        android:textColor="@android:color/white"/>
 
     <TextView
         android:id="@+id/sett"
@@ -39,9 +39,9 @@
         android:clickable="true"
         android:gravity="center_vertical"
         android:text="UPDATE SETTINGS"
-        android:textColor="@color/bg_register"
         android:textSize="18sp"
-        android:textStyle="bold" />
+        android:textStyle="bold"
+        android:textColor="@android:color/white"/>
 
     <View
         android:id="@+id/viewsett"
@@ -50,7 +50,8 @@
         android:layout_below="@+id/sett"
         android:layout_marginLeft="20dp"
         android:layout_marginRight="20dp"
-        android:background="@android:color/black" />
+        android:background="@android:color/darker_gray"
+     />
 
 
     <TextView
@@ -63,7 +64,8 @@
         android:textSize="24sp"
         android:layout_below="@+id/sett"
         android:layout_alignLeft="@+id/sett"
-        android:layout_alignStart="@+id/sett" />
+        android:layout_alignStart="@+id/sett"
+        android:textColor="@android:color/white"/>
 
     <View
         android:id="@+id/view2"
@@ -72,7 +74,8 @@
         android:layout_marginLeft="20dp"
         android:layout_marginRight="20dp"
         android:background="@android:color/darker_gray"
-        android:layout_below="@+id/dplan" />
+        android:layout_below="@+id/dplan"
+        android:textColor="@android:color/white"/>
 
 
     <TextView
@@ -85,7 +88,8 @@
         android:textSize="24sp"
         android:layout_below="@+id/dplan"
         android:layout_alignLeft="@+id/dplan"
-        android:layout_alignStart="@+id/dplan" />
+        android:layout_alignStart="@+id/dplan"
+        android:textColor="@android:color/white"/>
 
     <View
         android:id="@+id/view4"
@@ -106,7 +110,8 @@
         android:clickable="true"
         android:gravity="center_vertical"
         android:text="Change Password"
-        android:textSize="24sp" />
+        android:textSize="24sp"
+        android:textColor="@android:color/white"/>
 
     <View
         android:id="@+id/view5"
