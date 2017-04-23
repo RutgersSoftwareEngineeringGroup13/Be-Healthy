@@ -16,7 +16,8 @@
         android:layout_marginBottom="200dp"
         android:layout_marginLeft="@android:dimen/notification_large_icon_height"
         android:layout_marginRight="@android:dimen/notification_large_icon_height"
-        android:layout_marginTop="50dp"/>
+        android:layout_marginTop="50dp"
+        />
 
     <ScrollView
         android:layout_width="match_parent"
