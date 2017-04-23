@@ -11,6 +11,36 @@
         android:background="@drawable/white_square">
 
         <TextView
+            android:id="@+id/ProText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignStart="@+id/CarbText"
+            android:layout_below="@+id/CarbText"
+            android:layout_marginTop="58dp"
+            android:text="Protein:"
+            android:textSize="24sp" />
+
+        <TextView
+            android:id="@+id/CarbText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignStart="@+id/FatText"
+            android:layout_below="@+id/FatText"
+            android:layout_marginTop="52dp"
+            android:text="Carbs:"
+            android:textSize="24sp" />
+
+        <TextView
+            android:id="@+id/FatText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="41dp"
+            android:text="Fat:"
+            android:textSize="24sp"
+            android:layout_below="@+id/CalText"
+            android:layout_alignStart="@+id/CalText" />
+
+        <TextView
             android:id="@+id/foodDate"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -19,5 +49,61 @@
             android:layout_alignParentTop="true"
             android:layout_centerHorizontal="true"
             android:layout_marginTop="15dp" />
+
+        <TextView
+            android:id="@+id/CalText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentStart="true"
+            android:layout_below="@+id/foodDate"
+            android:layout_marginStart="30dp"
+            android:layout_marginTop="78dp"
+            android:text="Calories:"
+            android:textSize="24sp" />
+
+        <EditText
+            android:id="@+id/calories"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBottom="@+id/CalText"
+            android:layout_alignStart="@+id/foodDate"
+            android:ems="10"
+            android:inputType="number" />
+
+        <EditText
+            android:id="@+id/fat"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBottom="@+id/FatText"
+            android:layout_alignStart="@+id/calories"
+            android:ems="10"
+            android:inputType="number" />
+
+        <EditText
+            android:id="@+id/carbs"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBottom="@+id/CarbText"
+            android:layout_alignStart="@+id/fat"
+            android:ems="10"
+            android:inputType="number" />
+
+        <EditText
+            android:id="@+id/protein"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBottom="@+id/ProText"
+            android:layout_alignStart="@+id/carbs"
+            android:ems="10"
+            android:inputType="number" />
+
+        <Button
+            android:id="@+id/addData"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_centerHorizontal="true"
+            android:layout_marginBottom="19dp"
+            android:text="OK" />
     </RelativeLayout>
 </LinearLayout>

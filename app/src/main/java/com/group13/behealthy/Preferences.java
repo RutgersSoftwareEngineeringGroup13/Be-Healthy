@@ -60,6 +60,7 @@ public class Preferences extends Fragment {
         TextView diet = (TextView)rootView.findViewById(R.id.dplan);
         TextView changePassword = (TextView)rootView.findViewById(R.id.changePass);
         TextView notification = (TextView)rootView.findViewById(R.id.notify);
+        TextView signOut = (TextView)rootView.findViewById(R.id.signOut);
         CharSequence[] plans = new CharSequence[4];
         plans[0] = "Lose Weight";
         plans[1] = "Gain Weight";
@@ -122,6 +123,14 @@ public class Preferences extends Fragment {
             @Override
             public void onClick(View v){
                 builder.show();
+            }
+        });
+        signOut.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View v){
+                signOut();
+                Intent j = new Intent(rootView.getContext(), LoginActivity.class);
+                startActivity(j);
             }
         });
         final AlertDialog alert = newPass.create();

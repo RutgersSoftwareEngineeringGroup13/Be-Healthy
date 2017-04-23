@@ -33,9 +33,9 @@
         android:layout_width="match_parent"
         android:layout_marginTop="20dp"
         android:layout_height="50dp"
-        android:layout_alignLeft="@+id/changePass"
-        android:layout_alignStart="@+id/changePass"
-        android:layout_below="@+id/changePass"
+        android:layout_alignLeft="@+id/signOut"
+        android:layout_alignStart="@+id/signOut"
+        android:layout_below="@+id/signOut"
         android:clickable="true"
         android:gravity="center_vertical"
         android:text="UPDATE SETTINGS"
@@ -116,5 +116,26 @@
         android:layout_marginRight="20dp"
         android:background="@android:color/darker_gray"
         android:layout_below="@+id/changePass" />
+
+    <TextView
+        android:id="@+id/signOut"
+        android:layout_width="match_parent"
+        android:layout_height="70dp"
+        android:layout_alignLeft="@+id/changePass"
+        android:layout_alignStart="@+id/changePass"
+        android:layout_below="@+id/changePass"
+        android:clickable="true"
+        android:gravity="center_vertical"
+        android:text="Sign Out"
+        android:textSize="24sp" />
+
+    <View
+        android:id="@+id/viewsign"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        android:background="@android:color/darker_gray"
+        android:layout_below="@+id/signOut" />
 
 </RelativeLayout>

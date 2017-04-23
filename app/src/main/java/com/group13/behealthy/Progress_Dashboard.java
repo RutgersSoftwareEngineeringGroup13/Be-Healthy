@@ -59,17 +59,21 @@ public class Progress_Dashboard extends AppCompatActivity{
         super.onCreate(savedInstanceState);
         setContentView(R.layout.progress_dashboard);
 
-        setupPieChart ();
+        setupPieChart();
 
+        Runnable runnable = new Runnable() {
+            public void run() {
+                mNavItems.add(new NavItem("Dashboard", "View Your Progress", R.drawable.ic_action_home));
+                mNavItems.add(new NavItem("Friends", "View Your Friends' Profile", R.drawable.ic_action_friends));
+                mNavItems.add(new NavItem("Pictures", "View Your Pictures", R.drawable.ic_action_pictures));
+                mNavItems.add(new NavItem("Food Intake", "Edit Your Daily Food Intake", R.drawable.ic_action_food));
+                mNavItems.add(new NavItem("Macronutrients", "Edit Your Macronutrient Goals", R.drawable.ic_action_macros));
+                mNavItems.add(new NavItem("Preferences", "Change Your Preferences", R.drawable.ic_action_settings));
+            }
+        };
+        Thread mythread = new Thread(runnable);
+        mythread.start();
 
-
-
-        mNavItems.add(new NavItem("Dashboard", "View Your Progress", R.drawable.ic_action_home));
-        mNavItems.add(new NavItem("Friends", "View Your Friends' Profile", R.drawable.ic_action_friends));
-        mNavItems.add(new NavItem("Pictures", "View Your Pictures", R.drawable.ic_action_pictures));
-        mNavItems.add(new NavItem("Food Intake", "Edit Your Daily Food Intake", R.drawable.ic_action_food));
-        mNavItems.add(new NavItem("Macronutrients", "Edit Your Macronutrient Goals", R.drawable.ic_action_macros));
-        mNavItems.add(new NavItem("Preferences", "Change Your Preferences", R.drawable.ic_action_settings));
 
 
         // DrawerLayout
@@ -118,6 +122,7 @@ public class Progress_Dashboard extends AppCompatActivity{
                         break;
                     default: break;
                 }
+
             }
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
