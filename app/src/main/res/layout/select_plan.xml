@@ -4,7 +4,8 @@
     android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.group13.behealthy.Select_Plan">
+    tools:context="com.group13.behealthy.Select_Plan"
+    android:background="@color/colorPrimaryDark">
 
     <RelativeLayout
         android:layout_width="match_parent"
@@ -18,7 +19,8 @@
             android:textSize="36sp"
             android:layout_alignParentTop="true"
             android:layout_centerHorizontal="true"
-            android:layout_marginTop="38dp" />
+            android:layout_marginTop="38dp"
+            android:textColor="@color/white"/>
 
         <RadioGroup
             android:id="@+id/radioG1"
@@ -35,7 +37,8 @@
                 android:layout_alignStart="@+id/Diet"
                 android:layout_below="@+id/Diet"
                 android:text="@string/plan1"
-                android:textSize="24sp" />
+                android:textSize="24sp"
+                android:textColor="@color/white"/>
 
             <RadioButton
                 android:id="@+id/plan2"
@@ -47,7 +50,8 @@
                 android:layout_marginTop="34dp"
                 android:layout_weight="1"
                 android:text="@string/plan2"
-                android:textSize="24sp" />
+                android:textSize="24sp"
+                android:textColor="@color/white"/>
 
             <RadioButton
                 android:id="@+id/plan3"
@@ -59,7 +63,8 @@
                 android:layout_marginTop="34dp"
                 android:layout_weight="1"
                 android:text="@string/plan3"
-                android:textSize="24sp" />
+                android:textSize="24sp"
+                android:textColor="@color/white"/>
 
             <RadioButton
                 android:id="@+id/plan4"
@@ -71,7 +76,8 @@
                 android:layout_marginTop="34dp"
                 android:layout_weight="1"
                 android:text="@string/plan4"
-                android:textSize="24sp" />
+                android:textSize="24sp"
+                android:textColor="@color/white"/>
         </RadioGroup>
 
         <Button
@@ -82,7 +88,8 @@
             android:layout_centerHorizontal="true"
             android:layout_marginBottom="49dp"
             android:onClick="SPnext"
-            android:text="@string/next" />
+            android:text="@string/next"
+            android:background="@color/colorAccent"/>
 
     </RelativeLayout>
 </LinearLayout>

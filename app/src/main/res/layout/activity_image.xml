@@ -9,26 +9,30 @@
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
-    tools:context="com.group13.behealthy.ImageActivity">
+    tools:context="com.group13.behealthy.ImageActivity"
+    android:background="@color/colorPrimaryDark">
 
     <TextView
         style="@style/TextAppearance.AppCompat.Medium"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Upload" />
+        android:text="Upload"
+        android:textColor="@color/white"/>
 
     <Button
         android:id="@+id/button_choose_photo"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Choose Image" />
+        android:text="Choose Image"
+        android:background="@color/colorAccent"/>
 
     <TextView
         style="@style/TextAppearance.AppCompat.Medium"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
-        android:text="Download" />
+        android:text="Download"
+        android:textColor="@color/white"/>
 
     <LinearLayout
         android:layout_width="wrap_content"
@@ -39,8 +43,8 @@
             android:id="@+id/button_download_direct"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:enabled="false"
-            android:text="Download"/>
+            android:text="Download"
+            android:background="@color/colorAccent"/>
 
     </LinearLayout>
 
