@@ -8,7 +8,7 @@
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@drawable/white_square">
+        android:background="@color/colorPrimaryDark">
 
         <TextView
             android:id="@+id/ProText"
@@ -18,7 +18,8 @@
             android:layout_below="@+id/CarbText"
             android:layout_marginTop="58dp"
             android:text="Protein:"
-            android:textSize="24sp" />
+            android:textSize="24sp"
+            android:textColor="@color/white"/>
 
         <TextView
             android:id="@+id/CarbText"
@@ -28,7 +29,8 @@
             android:layout_below="@+id/FatText"
             android:layout_marginTop="52dp"
             android:text="Carbs:"
-            android:textSize="24sp" />
+            android:textSize="24sp"
+            android:textColor="@color/white"/>
 
         <TextView
             android:id="@+id/FatText"
@@ -38,7 +40,8 @@
             android:text="Fat:"
             android:textSize="24sp"
             android:layout_below="@+id/CalText"
-            android:layout_alignStart="@+id/CalText" />
+            android:layout_alignStart="@+id/CalText"
+            android:textColor="@color/white"/>
 
         <TextView
             android:id="@+id/foodDate"
@@ -48,7 +51,8 @@
             android:textSize="30sp"
             android:layout_alignParentTop="true"
             android:layout_centerHorizontal="true"
-            android:layout_marginTop="15dp" />
+            android:layout_marginTop="15dp"
+            android:textColor="@color/white"/>
 
         <TextView
             android:id="@+id/CalText"
@@ -59,7 +63,8 @@
             android:layout_marginStart="30dp"
             android:layout_marginTop="78dp"
             android:text="Calories:"
-            android:textSize="24sp" />
+            android:textSize="24sp"
+            android:textColor="@color/white"/>
 
         <EditText
             android:id="@+id/calories"
@@ -104,7 +109,9 @@
             android:text="OK"
             android:layout_below="@+id/protein"
             android:layout_centerHorizontal="true"
-            android:layout_marginTop="32dp" />
+            android:layout_marginTop="32dp"
+            android:background="@color/colorAccent"
+            android:textColor="@color/white"/>
 
         <TextView
             android:id="@+id/foodText"
@@ -114,7 +121,8 @@
             android:layout_alignStart="@+id/CalText"
             android:layout_marginBottom="14dp"
             android:text="Food:"
-            android:textSize="24sp" />
+            android:textSize="24sp"
+            android:textColor="@color/white"/>
 
         <EditText
             android:id="@+id/foodName"
