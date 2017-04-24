@@ -82,7 +82,6 @@
             android:textSize="30sp"
             android:typeface="serif"
             android:visibility="visible"
-            android:onClick="nutrition_counter"
             android:layout_alignParentTop="true"
             android:layout_centerHorizontal="true" />
 
