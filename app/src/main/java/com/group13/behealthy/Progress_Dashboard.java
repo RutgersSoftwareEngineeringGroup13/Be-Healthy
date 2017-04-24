@@ -1,7 +1,6 @@
 package com.group13.behealthy;
 
 import android.app.Fragment;
-import android.app.FragmentManager;
 import android.app.FragmentTransaction;
 import android.content.Context;
 import android.content.Intent;
@@ -19,13 +18,14 @@ import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
-
+import android.widget.Toast;
 import com.github.mikephil.charting.charts.PieChart;
+import com.github.mikephil.charting.components.Description;
+import com.github.mikephil.charting.components.Legend;
 import com.github.mikephil.charting.data.PieData;
 import com.github.mikephil.charting.data.PieDataSet;
 import com.github.mikephil.charting.data.PieEntry;
 import com.github.mikephil.charting.utils.ColorTemplate;
-
 
 import java.util.ArrayList;
 import java.util.List;
@@ -37,12 +37,11 @@ import java.util.List;
 
 public class Progress_Dashboard extends AppCompatActivity{
 
-    float testdata[] = {98.8f, 123.4f, 126.4f};
     String calories[] = {"Carbs", "Fats", "Protein"};
-
-
     private static String TAG = MainActivity.class.getSimpleName();
-
+    float protein;
+    float carbs;
+    float fat;
     ListView mDrawerList;
     RelativeLayout mDrawerPane;
     private ActionBarDrawerToggle mDrawerToggle;
@@ -55,19 +54,25 @@ public class Progress_Dashboard extends AppCompatActivity{
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.progress_dashboard);
-
-        setupPieChart ();
-
-
-
-
-        mNavItems.add(new NavItem("Dashboard", "View Your Progress", R.drawable.ic_action_home));
-        mNavItems.add(new NavItem("Friends", "View Your Friends' Profile", R.drawable.ic_action_friends));
-        mNavItems.add(new NavItem("Pictures", "View Your Pictures", R.drawable.ic_action_pictures));
-        mNavItems.add(new NavItem("Food Intake", "Edit Your Daily Food Intake", R.drawable.ic_action_food));
-        mNavItems.add(new NavItem("Macronutrients", "Edit Your Macronutrient Goals", R.drawable.ic_action_macros));
-        mNavItems.add(new NavItem("Preferences", "Change Your Preferences", R.drawable.ic_action_settings));
-
+        Bundle bundle = getIntent().getExtras();
+        float Calories = bundle.getInt("Key1");
+        float Protein = bundle.getInt("Key2");
+        float Fat = bundle.getInt("Key3");
+        float Carbs = bundle.getInt("Key4");
+        float[] testdata ={1000f,1000f,1000f};
+        setupPieChart(testdata);
+        Runnable runnable = new Runnable() {
+            public void run() {
+                mNavItems.add(new NavItem("Dashboard", "View Your Progress", R.drawable.ic_action_home));
+                mNavItems.add(new NavItem("Friends", "View Your Friends' Profile", R.drawable.ic_action_friends));
+                mNavItems.add(new NavItem("Pictures", "View Your Pictures", R.drawable.ic_action_pictures));
+                mNavItems.add(new NavItem("Food Intake", "Edit Your Daily Food Intake", R.drawable.ic_action_food));
+                mNavItems.add(new NavItem("Macronutrients", "Edit Your Macronutrient Goals", R.drawable.ic_action_macros));
+                mNavItems.add(new NavItem("Preferences", "Change Your Preferences", R.drawable.ic_action_settings));
+            }
+        };
+        Thread mythread = new Thread(runnable);
+        mythread.start();
 
         // DrawerLayout
         mDrawerLayout = (DrawerLayout) findViewById(R.id.drawerLayout);
@@ -115,6 +120,7 @@ public class Progress_Dashboard extends AppCompatActivity{
                         break;
                     default: break;
                 }
+
             }
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
@@ -145,8 +151,6 @@ public class Progress_Dashboard extends AppCompatActivity{
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setHomeButtonEnabled(true);
     }
-
-
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
@@ -227,7 +231,13 @@ public class Progress_Dashboard extends AppCompatActivity{
         }
 
     }
-    private void setupPieChart() {
+    public void calculateMacros(int weight, float calorieIntake) {
+        float protein = 4f * 1.2f * weight;
+        float fat = (.20f * calorieIntake);
+        float carbs = calorieIntake - (protein + fat);
+    }
+
+    private void setupPieChart(float testdata[]) {
         // Populating a list of PieEntries:
         List<PieEntry> pieEntries = new ArrayList<>();
         for (int i = 0; i < testdata.length; i++) {
@@ -235,14 +245,30 @@ public class Progress_Dashboard extends AppCompatActivity{
         }
 
         PieDataSet dataSet = new PieDataSet(pieEntries, "Calories you should consume today");
-        dataSet.setColors(ColorTemplate.COLORFUL_COLORS);
+        dataSet.setColors(ColorTemplate.MATERIAL_COLORS);
+        dataSet.setValueTextSize(30f);
+
         PieData data = new PieData(dataSet);
 
         // Get the chart:
         PieChart chart = (PieChart) findViewById(R.id.chart);
+        chart.animateXY(1400, 1400);
+        chart.setTouchEnabled( true );
+        chart.setRotationEnabled( true );
+        chart.isUsePercentValuesEnabled();
+        //chart.getCircleBox();
+        chart.getHoleRadius();
+        chart.setHoleRadius(1f);
+        chart.isUsePercentValuesEnabled();
+        chart.setUsePercentValues( true );
         chart.setData(data);
-        chart.animateY(1000);
-        chart.invalidate();
+
+        //chart.invalidate();
+        Legend l = chart.getLegend();
+        l.setEnabled(false);
+        Description des = chart.getDescription();
+        des.setEnabled(false);
+
 
     }
 
