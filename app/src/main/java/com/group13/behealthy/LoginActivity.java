@@ -36,7 +36,7 @@ public class LoginActivity extends AppCompatActivity {
     Calendar c = Calendar.getInstance();
     SimpleDateFormat df = new SimpleDateFormat("M-dd-yyyy");
     String date = df.format(c.getTime());
-    
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
