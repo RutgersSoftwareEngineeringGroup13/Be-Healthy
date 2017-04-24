@@ -18,7 +18,7 @@ import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
-
+import android.widget.Toast;
 import com.github.mikephil.charting.charts.PieChart;
 import com.github.mikephil.charting.components.Description;
 import com.github.mikephil.charting.components.Legend;
@@ -37,12 +37,11 @@ import java.util.List;
 
 public class Progress_Dashboard extends AppCompatActivity{
 
-    float testdata[] = {98.8f, 123.4f, 126.4f};
     String calories[] = {"Carbs", "Fats", "Protein"};
-
-
     private static String TAG = MainActivity.class.getSimpleName();
-
+    float protein;
+    float carbs;
+    float fat;
     ListView mDrawerList;
     RelativeLayout mDrawerPane;
     private ActionBarDrawerToggle mDrawerToggle;
@@ -55,9 +54,13 @@ public class Progress_Dashboard extends AppCompatActivity{
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.progress_dashboard);
-
-        setupPieChart();
-
+        Bundle bundle = getIntent().getExtras();
+        float Calories = bundle.getInt("Key1");
+        float Protein = bundle.getInt("Key2");
+        float Fat = bundle.getInt("Key3");
+        float Carbs = bundle.getInt("Key4");
+        float[] testdata ={1000f,1000f,1000f};
+        setupPieChart(testdata);
         Runnable runnable = new Runnable() {
             public void run() {
                 mNavItems.add(new NavItem("Dashboard", "View Your Progress", R.drawable.ic_action_home));
@@ -70,8 +73,6 @@ public class Progress_Dashboard extends AppCompatActivity{
         };
         Thread mythread = new Thread(runnable);
         mythread.start();
-
-
 
         // DrawerLayout
         mDrawerLayout = (DrawerLayout) findViewById(R.id.drawerLayout);
@@ -150,8 +151,6 @@ public class Progress_Dashboard extends AppCompatActivity{
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setHomeButtonEnabled(true);
     }
-
-
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
@@ -232,7 +231,13 @@ public class Progress_Dashboard extends AppCompatActivity{
         }
 
     }
-    private void setupPieChart() {
+    public void calculateMacros(int weight, float calorieIntake) {
+        float protein = 4f * 1.2f * weight;
+        float fat = (.20f * calorieIntake);
+        float carbs = calorieIntake - (protein + fat);
+    }
+
+    private void setupPieChart(float testdata[]) {
         // Populating a list of PieEntries:
         List<PieEntry> pieEntries = new ArrayList<>();
         for (int i = 0; i < testdata.length; i++) {
