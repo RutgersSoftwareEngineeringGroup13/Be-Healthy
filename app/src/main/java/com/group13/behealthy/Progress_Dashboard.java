@@ -18,6 +18,7 @@ import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.github.mikephil.charting.charts.PieChart;
 import com.github.mikephil.charting.components.Description;
@@ -26,9 +27,22 @@ import com.github.mikephil.charting.data.PieData;
 import com.github.mikephil.charting.data.PieDataSet;
 import com.github.mikephil.charting.data.PieEntry;
 import com.github.mikephil.charting.utils.ColorTemplate;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
+
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.List;
+import java.util.Locale;
+
+import static java.security.AccessController.getContext;
 
 
 /**
@@ -36,6 +50,11 @@ import java.util.List;
  */
 
 public class Progress_Dashboard extends AppCompatActivity{
+    static float value = (float) 0.0;
+    float v = (float) 0.0;
+    public static void setValue(float val){
+        value = val;
+    }
 
     float testdata[] = {98.8f, 123.4f, 126.4f};
     String calories[] = {"Carbs", "Fats", "Protein"};
@@ -49,14 +68,17 @@ public class Progress_Dashboard extends AppCompatActivity{
     private DrawerLayout mDrawerLayout;
     private String Progress_Dashboard;
 
+
     ArrayList<NavItem> mNavItems = new ArrayList<NavItem>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.progress_dashboard);
+        TextView calEat = (TextView) findViewById(R.id.calEat);
 
         setupPieChart();
+        calEat.setText(String.format("%f", value));
 
         Runnable runnable = new Runnable() {
             public void run() {

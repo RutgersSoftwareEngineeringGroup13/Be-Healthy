@@ -16,6 +16,15 @@ import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
+
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
 
 public class LoginActivity extends AppCompatActivity {
 
@@ -24,6 +33,10 @@ public class LoginActivity extends AppCompatActivity {
     private ProgressBar progressBar;
     private Button btnSignup, btnLogin, btnReset;
 
+    Calendar c = Calendar.getInstance();
+    SimpleDateFormat df = new SimpleDateFormat("M-dd-yyyy");
+    String date = df.format(c.getTime());
+    
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -99,11 +112,34 @@ public class LoginActivity extends AppCompatActivity {
                                     }
                                 } else {
                                     Intent intent = new Intent(LoginActivity.this, Select_Plan.class);
+                                    getCalories();
                                     startActivity(intent);
                                     finish();
                                 }
                             }
                         });
+            }
+        });
+    }
+
+    public void getCalories(){
+        final FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+        String uid = user.getUid();
+        FirebaseDatabase database = FirebaseDatabase.getInstance();
+        DatabaseReference myRef = database.getReference("series");
+        myRef.child(uid).child(date).child("Total").addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                if(dataSnapshot.getValue() != null){
+                    float val;
+                    val = Float.parseFloat(dataSnapshot.getValue().toString());
+                    Progress_Dashboard.setValue(val);
+                }
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+                Toast.makeText(getApplicationContext(), "Oops " + databaseError.getMessage(), Toast.LENGTH_LONG).show();
             }
         });
     }

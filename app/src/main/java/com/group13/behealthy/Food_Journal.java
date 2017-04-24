@@ -4,6 +4,7 @@ import android.app.Fragment;
 import android.database.Cursor;
 import android.os.Bundle;
 import android.support.annotation.Keep;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.ViewGroup;
 import android.widget.DatePicker;
@@ -29,6 +30,8 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.IgnoreExtraProperties;
 import com.google.firebase.database.ValueEventListener;
 
+import java.util.concurrent.TimeUnit;
+
 /**
  * Created by stephan on 3/26/17.
  */
@@ -39,9 +42,14 @@ import com.google.firebase.database.ValueEventListener;
 public class Food_Journal extends Fragment {
     static DatePicker date;
     TextView text;
+    static float total =(float) 0.0;
+    float CalVal =(float) 0.0;
     private FirebaseDatabase database;
     public static void setDate(final DatePicker d1) {
         date = d1;
+    }
+    public static void setTotal(float value) {
+        total = value;
     }
 
     public Food_Journal() {
@@ -64,7 +72,8 @@ public class Food_Journal extends Fragment {
         String year = Integer.toString(date.getYear());
         String month = Integer.toString(date.getMonth() + 1);
         String day = Integer.toString(date.getDayOfMonth());
-        String date1 = month + "/" + day + "/" + year;
+        final String date1 = month + "/" + day + "/" + year;
+        final String date2 = month + "-" + day + "-" + year;
         text.setText(date1);
         final DatabaseReference myRef;
         myRef = database.getReference("series");
@@ -77,23 +86,27 @@ public class Food_Journal extends Fragment {
             @Override
             public void onClick(View v){
                 float c, cc, f, p;
-                final EditText cal = (EditText)rootView.findViewById(R.id.calories);
-                final EditText carb = (EditText)rootView.findViewById(R.id.carbs);
-                final EditText fat = (EditText)rootView.findViewById(R.id.fat);
-                final EditText prot = (EditText)rootView.findViewById(R.id.protein);
+                EditText cal = (EditText)rootView.findViewById(R.id.calories);
+                EditText carb = (EditText)rootView.findViewById(R.id.carbs);
+                EditText fat = (EditText)rootView.findViewById(R.id.fat);
+                EditText prot = (EditText)rootView.findViewById(R.id.protein);
+                final EditText name = (EditText)rootView.findViewById(R.id.foodName);
                 c = Float.parseFloat(cal.getText().toString());
                 cc = Float.parseFloat(carb.getText().toString());
                 f = Float.parseFloat(fat.getText().toString());
                 p = Float.parseFloat(prot.getText().toString());
                 Entry entry = new Entry(c, cc, f, p);
                 if (user != null) {
-                    myRef.child("Calories").child(uid).setValue(entry.calories);
-                    myRef.child("Carbohydrates").child(uid).setValue(entry.carbohydrates);
-                    myRef.child("Fat").child(uid).setValue(entry.fat);
-                    myRef.child("Protein").child(uid).setValue(entry.protein);
-                    myRef.addValueEventListener(new ValueEventListener() {
+                    myRef.child(uid).child(date2).child(name.getText().toString()).child("Calories").setValue(entry.calories);
+                    myRef.child(uid).child(date2).child(name.getText().toString()).child("Carbohydrates").setValue(entry.carbohydrates);
+                    myRef.child(uid).child(date2).child(name.getText().toString()).child("Fat").setValue(entry.fat);
+                    myRef.child(uid).child(date2).child(name.getText().toString()).child("Protein").setValue(entry.protein);
+                    myRef.child(uid).child(date2).child(name.getText().toString()).child("Calories").addListenerForSingleValueEvent(new ValueEventListener() {
                         @Override
                         public void onDataChange(DataSnapshot dataSnapshot) {
+                            float value = Float.parseFloat(dataSnapshot.getValue().toString());
+                            setValue(value);
+                            myRef.child(uid).child(date2).child("Total").setValue(total);
                         }
 
                         @Override
@@ -101,7 +114,18 @@ public class Food_Journal extends Fragment {
                             Toast.makeText(rootView.getContext(), "Oops " + databaseError.getMessage(), Toast.LENGTH_LONG).show();
                         }
                     });
+                    //myRef.child(uid).child(date2).child("Total").setValue(total);
                 }
+                /*DatabaseReference mDatabase;
+                mDatabase = FirebaseDatabase.getInstance().getReference();
+
+                String key = mDatabase.child(date2).child(name.getText().toString()).child("Total").child(uid).push().get;
+                if(key == null){
+                    total = (float) 0.0;
+                }
+                else
+                    total += Float.parseFloat(key);
+                myRef.child(date2).child(name.getText().toString()).child("Total").child(uid).setValue(total);*/
             }
         });
 
@@ -110,7 +134,7 @@ public class Food_Journal extends Fragment {
     }
 
     @IgnoreExtraProperties
-    public class Entry {
+    public static class Entry {
 
         public Float calories;
         public Float fat;
@@ -127,6 +151,11 @@ public class Food_Journal extends Fragment {
             this.carbohydrates = carbohydrates;
             this.protein = protein;
         }
+    }
+
+    public void setValue(float value){
+        CalVal = value;
+        total += CalVal;
     }
 
 

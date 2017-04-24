@@ -101,9 +101,28 @@
             android:id="@+id/addData"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_alignParentBottom="true"
+            android:text="OK"
+            android:layout_below="@+id/protein"
             android:layout_centerHorizontal="true"
-            android:layout_marginBottom="19dp"
-            android:text="OK" />
+            android:layout_marginTop="32dp" />
+
+        <TextView
+            android:id="@+id/foodText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_above="@+id/calories"
+            android:layout_alignStart="@+id/CalText"
+            android:layout_marginBottom="14dp"
+            android:text="Food:"
+            android:textSize="24sp" />
+
+        <EditText
+            android:id="@+id/foodName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_above="@+id/calories"
+            android:layout_alignStart="@+id/calories"
+            android:ems="10"
+            android:inputType="textPersonName" />
     </RelativeLayout>
 </LinearLayout>
