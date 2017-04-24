@@ -132,6 +132,7 @@
         android:clickable="true"
         android:gravity="center_vertical"
         android:text="Sign Out"
+        android:textColor="@android:color/white"
         android:textSize="24sp" />
 
     <View
